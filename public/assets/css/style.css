@@ -1,0 +1,23 @@
+
+body{
+    background-color: lightcyan; 
+}
+
+h1{
+    color: white;
+    text-emphasis: 8;
+}
+
+.devour{
+    background-color: lightblue;
+    color: black;
+}
+
+.devoured{
+    background-color: lightcyan;
+}
+
+.jumbotron{
+    background-color: darkblue;
+
+}
