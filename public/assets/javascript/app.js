@@ -6,24 +6,22 @@ $(function(){
 
         const newBurger = {
             name: $("#bu").val().trim(),
-            devoured: false
-        }
+            devoured: 0
+        };
         console.log(newBurger);
-       /*  $.ajax("/api/burgers", {
+       $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
-
         }).then(
             function(){
                 location.reload(); 
-            }
-        ) */
+            }); 
         
 
-        $.post("/api/burgers", newBurger, function (Brandon){
+      /*  $.post("/api/burgers", newBurger, function (Brandon){
             console.log(Brandon)
             location.reload();
 
-        })
+        })*/
     });
-})
+});
