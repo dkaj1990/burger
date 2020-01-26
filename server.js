@@ -3,7 +3,7 @@ const exphbs = require("express-handlebars");
 
 const PORT = process.env.PORT || 8080; 
 
-app = express(); 
+const app = express(); 
 
 const router = require("./controllers/burgers_controller");
 
