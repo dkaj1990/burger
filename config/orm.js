@@ -2,33 +2,32 @@ const connection = require("./connection")
 
 function printQmarks(num) {
 
-    const arry = [];
+    let arr = [];
     for (let i=0; i<num; i++) {
-        arry.push("?");
+        arr.push("?");
     }
-    return arry.toString();
+    return arr.toString();
 
 }
 
 
 function objectTosql (ob){
-    const arry = [];
+    let arr = [];
     for(let key in ob ){
-        let value = ob[key]
+        let value = ob[key];
         if (Object.hasOwnProperty.call(ob,key)){
-            if (typeof value ==="string" && value.indexOf("")>= 0 ){
+            if (typeof value ==="string" && value.indexOf(" ")>= 0 ){
                 value = "'" + value + "'";
             }
-            arry.push(key + "=" + value);
+            arr.push(key + "=" + value);
         }
     }
-    return arry.toString();
-
+    return arr.toString();
 }
 
-const orm = {
+let orm = {
     all: function (tableInput, cb){
-        const queryString = "select * from " + tableInput + ";" ;
+        let queryString = "select * from " + tableInput + ";" ;
         connection.query(queryString, function (err, res){
             if (err){
                 throw err;
@@ -50,7 +49,7 @@ const orm = {
             throw err;
         } 
         cb(res);
-    })
+    });
     },
     update: function(table, objColVals, condition, cb) {
         let queryString = "update " + table;
@@ -68,8 +67,7 @@ const orm = {
     
           cb(result);
         });
-      }
-      
-}
+      }     
+};
 
 module.exports = orm
