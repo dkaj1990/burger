@@ -9,7 +9,9 @@ const burger = require("../models/burger");
 
 const router = express.Router(); 
 
-router.get("/", function(err, res){
+const path = require('path');
+
+router.get("/", function(req, res){
     burger.all(function(data){
         const object = {
             burgers: data
@@ -26,7 +28,11 @@ router.post("/api/burgers", function(req, res){
             id: result.insertId
         });
     }); */
-
+    
+    burger.create(["burger_name", "devoured"], [req.body.name, req.body.devoured], function(result) {
+      // Send back the ID of the new quote
+      res.json({ id: result.insertId });
+    });
     console.log(req.body); 
 });
 
@@ -38,7 +44,7 @@ router.put("/api/burgers/:id", function(req, res){
     },
     condition,
     function(result){
-        if(result.chnagedRows == 0){
+        if(result.changedRows === 0){
             return res.status(404).end(); 
         }else{
             res.status(200).end(); 
